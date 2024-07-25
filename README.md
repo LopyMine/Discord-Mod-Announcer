@@ -18,7 +18,7 @@ plugins {
 pluginManagement {
     repositories {
         // I don't have any repositories or money for it
-        // because you need to fork it and publish to local maven
+        // because you need to fork this project and publish to local maven
         mavenLocal()
     }
 }
