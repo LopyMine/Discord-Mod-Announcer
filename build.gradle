@@ -1,0 +1,61 @@
+plugins {
+	id 'java'
+	id 'java-gradle-plugin'
+	id 'maven-publish'
+}
+
+def pluginId = project.plugin_id
+def pluginGroup = project.plugin_group
+def pluginMavenGroup = project.plugin_maven_group
+def pluginVersion = project.plugin_version
+def pluginTags = project.plugin_tags.toString().split(" ")
+def pluginDescription = project.plugin_description
+
+def jdaVersion = project.jda_version
+def lombokVersion = project.lombok_version
+def logbackVersion = project.logback_version
+def junitVersion = project.junit_version
+
+group = pluginMavenGroup
+version = pluginVersion
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	// Java Discord API
+	implementation("net.dv8tion:JDA:${jdaVersion}")
+
+	// Logger for JDA
+	implementation("ch.qos.logback:logback-classic:${logbackVersion}")
+
+	// Lombok
+	compileOnly "org.projectlombok:lombok:${lombokVersion}"
+	annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+
+	// JUnit Tests
+	testImplementation("org.junit.jupiter:junit-jupiter:${junitVersion}")
+	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+}
+
+tasks.test {
+	useJUnitPlatform()
+}
+
+gradlePlugin {
+	plugins.create(pluginId) {
+		id = "${pluginMavenGroup}.${pluginId}"
+		implementationClass = "${pluginGroup}.DMAPlugin"
+		version = pluginVersion
+		description = pluginDescription
+		tags = Set.of(pluginTags)
+	}
+}
+
+publishing {
+	repositories {
+		mavenLocal()
+	}
+}
+
