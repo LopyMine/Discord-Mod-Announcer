@@ -4,30 +4,33 @@ import net.dv8tion.jda.internal.utils.Checks;
 import org.gradle.api.*;
 
 import java.io.File;
+import java.util.List;
 import org.jetbrains.annotations.NotNull;
 
 public class DMAPlugin implements Plugin<Project> {
 
 	@Override
 	public void apply(@NotNull Project project) {
-		project.getExtensions().create("discordModAnnouncer", DMAExtension.class);
+		project.getExtensions().create("announceToDiscord", DMAExtension.class);
 		project.getTasks().register("announceToDiscord", DMATask.class, (task) -> {
-			task.setGroup("announce");
+			task.setGroup("announcements");
 
-			DMAExtension extension = (DMAExtension) project.getExtensions().getByName("discordModAnnouncer");
+			DMAExtension extension = (DMAExtension) project.getExtensions().getByName("announceToDiscord");
 			String token = extension.getToken().getOrNull();
 			AnnounceMode announceMode = extension.getAnnounceMode();
 			File icon = extension.getIcon();
 			String title = extension.getTitle();
+			String showcaseThreadTitle = extension.getShowcaseThreadTitle();
 			String changelog = extension.getChangelog();
 			Integer color = extension.getColor();
 			String modrinthLink = extension.getModrinthLink();
 			String curseForgeLink = extension.getCurseForgeLink();
 			String githubLink = extension.getGithubLink();
 			String uploaderId = extension.getUploaderId();
-			String pingRoleName = extension.getPingRoleName();
+			List<String> pingRoles = extension.getPingRoles();
 			String announcementChannelId = extension.getAnnouncementChannelId();
 			String testAnnouncementChannelId = extension.getTestAnnouncementChannelId();
+			List<File> images = extension.getShowcaseImages();
 
 			Checks.notNull(token, "token");
 			Checks.notNull(title, "title");
@@ -45,9 +48,11 @@ public class DMAPlugin implements Plugin<Project> {
 			task.setCurseForgeLink(curseForgeLink);
 			task.setGithubLink(githubLink);
 			task.setUploaderId(uploaderId);
-			task.setPingRoleName(pingRoleName);
+			task.setPingRoles(pingRoles);
 			task.setAnnouncementChannelId(announcementChannelId);
 			task.setTestAnnouncementChannelId(testAnnouncementChannelId);
+			task.setShowcaseThreadTitle(showcaseThreadTitle);
+			task.setShowcaseImages(images);
 		});
 	}
 }
