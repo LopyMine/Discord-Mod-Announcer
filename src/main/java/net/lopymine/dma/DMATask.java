@@ -134,15 +134,16 @@ public class DMATask extends DefaultTask {
 				ThreadChannel threadChannel = message.createThreadChannel(this.showcaseThreadTitle == null ? "Showcase" : this.showcaseThreadTitle).complete();
 				threadChannel.getManager().setLocked(true).queue();
 
-				threadChannel.sendMessage(MessageCreateData.fromFiles(
-						this.showcaseImages.size() == 2 ?
-								new FileUpload[]{FileUpload.fromData(this.showcaseImages.get(1))}
-								:
-								this.showcaseImages.subList(1, this.showcaseImages.size() - 1)
-										.stream()
-										.flatMap((file) -> Stream.of(FileUpload.fromData(file)))
-										.toList().toArray(new FileUpload[0])
-				)).queue();
+				for (int i = 1; i < this.showcaseImages.size(); i += 3) {
+					int end = Math.min(i + 3, this.showcaseImages.size());
+
+					threadChannel.sendMessage(MessageCreateData.fromFiles(
+							this.showcaseImages.subList(i, end)
+									.stream()
+									.flatMap((file) -> Stream.of(FileUpload.fromData(file)))
+									.toList().toArray(new FileUpload[0])
+					)).queue();
+				}
 			}
 
 

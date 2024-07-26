@@ -45,7 +45,7 @@ public class DMATest {
 				    testAnnouncementChannelId = "1266007822173470730"
 				    pingRoles = ["Developer", "Mossy"]
 
-					showcaseImages = [project.rootProject.file("showcase.png"),project.rootProject.file("showcase2.png")]
+					showcaseImages = [project.rootProject.file("showcase.png"),project.rootProject.file("showcase2.png"), project.rootProject.file("showcase2.png")]
 				 }
 			""");
 			writer.close();
