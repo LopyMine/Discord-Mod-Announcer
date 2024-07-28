@@ -15,6 +15,7 @@ def jdaVersion = project.jda_version
 def lombokVersion = project.lombok_version
 def logbackVersion = project.logback_version
 def junitVersion = project.junit_version
+def gsonVersion = project.gson_version
 
 group = pluginMavenGroup
 version = pluginVersion
@@ -37,6 +38,9 @@ dependencies {
 	// JUnit Tests
 	testImplementation("org.junit.jupiter:junit-jupiter:${junitVersion}")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
+
+	// GSON
+	implementation("com.google.code.gson:gson:${gsonVersion}")
 }
 
 tasks.test {
@@ -49,7 +53,9 @@ gradlePlugin {
 		implementationClass = "${pluginGroup}.DMAPlugin"
 		version = pluginVersion
 		description = pluginDescription
-		tags = Set.of(pluginTags)
+		def tempTags = []
+		tempTags.addAll(pluginTags)
+		tags = tempTags
 	}
 }
 

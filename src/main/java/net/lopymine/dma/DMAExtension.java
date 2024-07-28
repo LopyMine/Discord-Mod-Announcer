@@ -1,9 +1,10 @@
 package net.lopymine.dma;
 
-
 import lombok.*;
 import org.gradle.api.provider.Provider;
 import org.gradle.api.tasks.*;
+
+import net.lopymine.dma.options.*;
 
 import java.io.File;
 import java.util.List;
@@ -16,6 +17,34 @@ public class DMAExtension {
 	AnnounceMode ENABLE = AnnounceMode.ENABLE;
 	AnnounceMode DISABLE = AnnounceMode.DISABLE;
 	AnnounceMode TEST = AnnounceMode.TEST;
+
+	LinksFormat BUTTONS = LinksFormat.BUTTONS;
+	LinksFormat VERSIONED = LinksFormat.VERSIONED;
+
+	PriorityPlatform MODRINTH = PriorityPlatform.MODRINTH;
+	PriorityPlatform CURSEFORGE = PriorityPlatform.CURSEFORGE;
+
+	@Nullable
+	@Input
+	LinksFormat linksFormat;
+	@Nullable
+	@Input
+	PriorityPlatform priorityPlatform;
+	@Nullable
+	@Input
+	String minecraftVersion;
+	@Nullable
+	@Input
+	String loader;
+	@Nullable
+	@Input
+	String modrinthModId;
+	@Nullable
+	@Input
+	Integer curseForgeProjectId;
+	@Nullable
+	@Input
+	Provider<String> curseForgeAPIToken;
 
 	@NotNull
 	@Input

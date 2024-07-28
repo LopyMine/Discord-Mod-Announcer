@@ -1,4 +1,4 @@
-package net.lopymine.dma;
+package net.lopymine.dma.options;
 
 public enum AnnounceMode {
 	ENABLE,
