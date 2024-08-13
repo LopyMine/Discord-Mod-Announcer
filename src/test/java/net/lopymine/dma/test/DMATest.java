@@ -42,7 +42,7 @@ public class DMATest {
 
 						    title = "My Cool Mod v2.0.0 is out!"
 						    showcaseThreadTitle = "Showcase My Cool Mod v2.0.0"
-						    changelog = "- Changelog line one \\n - Changelog line two \\n - Changelog line three"
+						    changelog = "- Changelog line one \\n- Changelog line two \\n- Changelog line three"
 
 						    modrinthLink = "https://youtu.be/dQw4w9WgXcQ?si=YuNYqbxc3xXANfKl"
 						    curseForgeLink = "https://youtu.be/hvL1339luv0?si=m9v6lHiIz7aly3uJ"
@@ -84,7 +84,7 @@ public class DMATest {
 						    token = providers.environmentVariable("DISCORD_BOT_TOKEN")
 
 						    title = "My Cool Mod v2.0.0 is out!"
-						    changelog = "- Changelog line one \\n - Changelog line two \\n - Changelog line three"
+						    changelog = "- Changelog line one \\n- Changelog line two \\n- Changelog line three"
 
 						    announcementChannelId = "1102941223003631698"
 						    testAnnouncementChannelId = "1266007822173470730"
@@ -136,7 +136,7 @@ public class DMATest {
 
 						    title = "My Cool Mod v2.0.0 is out!"
 						    showcaseThreadTitle = "Showcase My Cool Mod v2.0.0"
-						    changelog = "- Changelog line one \\n - Changelog line two \\n - Changelog line three"
+						    changelog = "- Changelog line one \\n- Changelog line two \\n- Changelog line three"
 
 						    modrinthLink = "https://youtu.be/dQw4w9WgXcQ?si=YuNYqbxc3xXANfKl"
 						    curseForgeLink = "https://youtu.be/hvL1339luv0?si=m9v6lHiIz7aly3uJ"
